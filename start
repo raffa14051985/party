@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Einladung zum 40. Geburtstag</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background: #f4f4f4;
+            color: #333;
+            font-family: 'Arial', sans-serif;
+            text-align: center;
+        }
+        .container {
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 30px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            font-size: 2.5rem;
+            color: #444;
+        }
+        p {
+            font-size: 1.2rem;
+        }
+        .details {
+            margin-top: 20px;
+            padding: 15px;
+            background: #e8e8e8;
+            border-radius: 8px;
+        }
+        .button {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 12px 25px;
+            font-size: 1rem;
+            color: white;
+            background: #556b8d;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none;
+            transition: background 0.3s;
+        }
+        .button:hover {
+            background: #405070;
+        }
+        #countdown {
+            font-size: 1.5rem;
+            margin-top: 20px;
+            font-weight: bold;
+            color: #555;
+        }
+        .hourglass {
+            font-size: 3rem;
+            margin-top: 10px;
+            animation: flip 1s infinite;
+        }
+        @keyframes flip {
+            0% { transform: rotate(0deg); }
+            50% { transform: rotate(180deg); }
+            100% { transform: rotate(360deg); }
+        }
+        .icons {
+            font-size: 2rem;
+            margin-top: 20px;
+        }
+    </style>
+    <script>
+        function startCountdown() {
+            const eventDate = new Date("May 14, 2025 17:00:00").getTime();
+            const countdownElement = document.getElementById("countdown");
+
+            function updateCountdown() {
+                const now = new Date().getTime();
+                const timeLeft = eventDate - now;
+
+                const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
+
+                countdownElement.innerHTML = `${days} Tage, ${hours} Stunden, ${minutes} Minuten, ${seconds} Sekunden`;
+
+                if (timeLeft < 0) {
+                    clearInterval(countdownInterval);
+                    countdownElement.innerHTML = "Die Party hat begonnen!";
+                }
+            }
+
+            updateCountdown();
+            const countdownInterval = setInterval(updateCountdown, 1000);
+        }
+
+        window.onload = startCountdown;
+    </script>
+</head>
+<body>
+    <div class="container">
+        <h1>Einladung zu meinem 40. Geburtstag 🎉</h1>
+        <p>Ich lade dich herzlich ein, diesen besonderen Tag mit mir zu feiern!</p>
+        <div class="details">
+            <p><strong>Datum:</strong> 14. Mai 2025</p>
+            <p><strong>Uhrzeit:</strong> 17:00 Uhr</p>
+            <p><strong>Ort:</strong> Feierhalle, Ihlenfelder Straße , Party City</p>
+        </div>
+        <div class="hourglass">⌛</div>
+        <p id="countdown">Lade Countdown...</p>
+        <div class="icons">
+            👦 👧 👱‍♀️ 🥃 🍺 🚔 🍽️
+        </div>
+        <a href="#" class="button">Sag mir Bescheid, ob du kommst!</a>
+    </div>
+</body>
+</html>
